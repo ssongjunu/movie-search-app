@@ -3,7 +3,6 @@ package me.junu.movie.controller;
 import me.junu.movie.config.ApiConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 
 /**
  * packageName    : me.junu.movie.controller
