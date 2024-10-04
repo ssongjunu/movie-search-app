@@ -5,7 +5,7 @@ pipeline {
         
         stage('github-clone') {
             steps {
-                git branch: 'main', credentialsId: 'Jenkins_Tokens', url: '{REPOSITORY URL}'
+                git branch: 'main', credentialsId: 'Jenkins_Tokens', url: 'https://github.com/ssongjunu/movie-search-app.git'
             }
         }
         
