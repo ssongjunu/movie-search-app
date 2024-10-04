@@ -1,1 +1,14 @@
-
+pipeline {
+    agent any
+    
+    stages {
+        
+        stage('github-clone') {
+            steps {
+                git branch: 'main', credentialsId: 'Jenkins_Tokens', url: '{REPOSITORY URL}'
+            }
+        }
+        
+   		// stage...
+   	}
+}
