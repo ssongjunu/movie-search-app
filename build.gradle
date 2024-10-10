@@ -25,3 +25,9 @@ dependencies {
 tasks.named('test') {
     useJUnitPlatform()
 }
+
+bootJar {
+    archivesBaseName = 'movie-search-app'
+    archiveFileName = 'movie-search-app.jar'
+    archiveVersion = "0.0.1"
+}
