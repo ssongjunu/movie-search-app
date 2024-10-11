@@ -29,16 +29,16 @@ pipeline {
                     def containerName = "movie-search-app-container"
 
                     // 기존 컨테이너가 존재할 경우 삭제
-                    sh "sudo docker rm -f ${containerName} || true"
+                    sh "docker rm -f ${containerName} || true"
 
                     // 기존 이미지를 삭제 후 다시 빌드
-                    sh "sudo docker rmi ${imageName} || true"
+                    sh "docker rmi ${imageName} || true"
 
                     // Docker 이미지를 빌드 (Dockerfile 사용)
-                    sh "sudo docker build -t ${imageName} ."
+                    sh "docker build -t ${imageName} ."
 
                     // 새로운 Docker 컨테이너 생성 및 실행
-                    sh "sudo docker run -d --name ${containerName} -p 8081:80 ${imageName}"
+                    sh "docker run -d --name ${containerName} -p 8081:80 ${imageName}"
                 }
             }
         }
