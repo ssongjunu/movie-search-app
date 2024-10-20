@@ -6,6 +6,6 @@ services:
     ports:
       - "8081:80"  # 호스트의 8081 포트를 컨테이너의 8080 포트와 매핑
     volumes:
-      - ./home/junu/docker_data/jenkins/workspace/movie-search-app/build/libs/movie-search-app.jar:/app/app.jar  # 빌드 후 JAR 파일을 컨테이너로 마운트
+      - ./build/libs/movie-search-app.jar:/app/app.jar  # 빌드 후 JAR 파일을 컨테이너로 마운트
     working_dir: /app  # 작업 디렉토리 설정
     command: ["java", "-jar", "app.jar"]  # JAR 파일 실행 명령어
