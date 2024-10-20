@@ -28,7 +28,7 @@ pipeline {
             steps {
                 script {
                     // 빌드된 JAR 파일 경로를 정확하게 설정
-                    def jarFilePath = "build/libs/movie-search-app-0.0.1-SNAPSHOT.jar"  // 실제 생성된 파일 이름으로 변경
+                    def jarFilePath = "build/libs/movie-search-app-0.0.1-SNAPSHOT.jar"
                     def imageName = "movie-search-app-image"
                     def containerName = "movie-search-app-container"
 
@@ -40,11 +40,10 @@ pipeline {
 
                     // Docker 이미지를 빌드하여 JAR 파일 포함
                     sh """
-                        docker build -t ${imageName} - <<EOF
-                        FROM openjdk:17-jdk-slim
-                        COPY ${jarFilePath} /app.jar
-                        ENTRYPOINT ["java", "-jar", "/app.jar"]
-                        EOF
+                        echo 'FROM openjdk:17-jdk-slim' > Dockerfile
+                        echo 'COPY ${jarFilePath} /app.jar' >> Dockerfile
+                        echo 'ENTRYPOINT ["java", "-jar", "/app.jar"]' >> Dockerfile
+                        docker build -t ${imageName} .
                     """
 
                     // Docker 컨테이너 생성 및 실행
