@@ -1,0 +1,16 @@
+version: '3.9'
+
+services:
+  movie-search-app:
+    image: openjdk:17-jdk-slim
+    container_name: movie-search-app
+    ports:
+      - "8081:80"
+    volumes:
+      - ./build/libs/movie-search-app.jar:/app/app.jar
+    working_dir: /app
+    command: ["java", "-jar", "app.jar"]
+    environment:
+      # 필요 시 환경 변수 추가
+      - JAVA_OPTS=-Xmx512m
+    restart: always
