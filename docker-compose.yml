@@ -10,7 +10,3 @@ services:
       - /home/junu/docker_data/jenkins/workspace/movie-search-app/build/libs/movie-search-app.jar:/app/app.jar
     working_dir: /app
     command: ["java", "-jar", "app.jar"]
-    environment:
-      # 필요 시 환경 변수 추가
-      - JAVA_OPTS=-Xmx512m
-    restart: always
