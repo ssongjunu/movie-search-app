@@ -24,6 +24,13 @@ pipeline {
             }
         }
 
+        stage('Set Permissions') {
+            steps {
+                // JAR 파일에 읽기 권한 부여
+                sh 'chmod 644 build/libs/movie-search-app.jar'
+            }
+        }
+
         stage('Deploy Docker Compose') {
             steps {
                 script {
