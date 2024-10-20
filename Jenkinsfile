@@ -11,7 +11,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                // gradlew 파일에 실행 권한 부여 및 빌드
+                // Gradle 빌드를 위한 실행 권한 부여 및 빌드
                 sh 'chmod +x ./gradlew'
                 sh './gradlew clean build'
             }
@@ -24,11 +24,24 @@ pipeline {
             }
         }
 
-        stage('Deploy with Docker Compose') {
+        stage('Deploy Docker Container') {
             steps {
-                // 기존 Docker Compose 컨테이너 중지 및 새로운 컨테이너 실행
-                sh 'docker-compose down || true'
-                sh 'docker-compose up -d'
+                script {
+                    def imageName = "movie-search-app-image"
+                    def containerName = "movie-search-app-container"
+
+                    // 기존 Docker 컨테이너 삭제
+                    sh "docker rm -f ${containerName} || true"
+
+                    // 기존 Docker 이미지 삭제 후 다시 빌드
+                    sh "docker rmi ${imageName} || true"
+
+                    // Docker 이미지 빌드 (Dockerfile 사용)
+                    sh "docker build -t ${imageName} ."
+
+                    // 새로운 Docker 컨테이너 실행
+                    sh "docker run -d --name ${containerName} -p 8080:8080 ${imageName}"
+                }
             }
         }
     }
