@@ -40,7 +40,7 @@ pipeline {
                     sh "docker build -t ${imageName} ."
 
                     // 새로운 Docker 컨테이너 실행
-                    sh "docker run -d --name ${containerName} -p 8080:8080 ${imageName}"
+                    sh "docker run -d --name ${containerName} -p 8081:80 ${imageName}"
                 }
             }
         }
