@@ -1,11 +1,11 @@
 version: '3.9'
 services:
   movie-search-app:
-    image: openjdk:17-jdk-slim
-    container_name: movie-search-app
+    image: openjdk:17-jdk-slim  # OpenJDK 17 이미지 사용
+    container_name: movie-search-app  # 컨테이너 이름
     ports:
-      - "8081:80"
+      - "8081:80"  # 포트 매핑
     volumes:
-      - ./build/libs/movie-search-app.jar:/app/app.jar
-    working_dir: /app
-    command: ["java", "-jar", "app.jar"]
+      - ./build/libs/movie-search-app.jar:/app/app.jar  # JAR 파일을 /app/app.jar로 마운트
+    working_dir: /app  # 컨테이너 작업 디렉토리를 /app으로 설정
+    command: ["java", "-jar", "app.jar"]  # app.jar 실행
