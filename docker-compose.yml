@@ -4,7 +4,7 @@ services:
     image: openjdk:17-jdk-slim
     container_name: movie-search-app
     ports:
-      - "8080:8080"
+      - "8080:80"
     volumes:
       - ./build/libs/movie-search-app.jar:/app/app.jar
     working_dir: /app
