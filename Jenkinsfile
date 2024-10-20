@@ -43,7 +43,6 @@ pipeline {
                         FROM openjdk:17-jdk-slim
                         COPY ${jarFilePath} /app.jar
                         ENTRYPOINT ["java", "-jar", "/app.jar"]
-                        EOF
                     """
 
                     // Docker 컨테이너 생성 및 실행
