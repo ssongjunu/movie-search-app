@@ -1,0 +1,11 @@
+version: '3.9'
+services:
+  movie-search-app:
+    image: openjdk:17-jdk-slim
+    container_name: movie-search-app
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./build/libs/movie-search-app.jar:/app/app.jar
+    working_dir: /app
+    command: ["sh", "-c", "cp /app/app.jar /app/app-copied.jar && java -jar /app/app-copied.jar"]
