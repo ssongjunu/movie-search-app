@@ -7,6 +7,6 @@ services:
     ports:
       - "8081:80"
     volumes:
-      - /home/junu/docker_data/jenkins/jenkins_home/workspace/movie-search-app/build/libs/movie-search-app.jar:/app/app.jar
+      - /home/junu/docker_data/movie-app/movie-search-app.jar:/app/app.jar
     working_dir: /app
     command: ["java", "-jar", "app.jar"]
